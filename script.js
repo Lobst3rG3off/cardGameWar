@@ -1,9 +1,40 @@
 import Deck from "./deck.js";
 
-const computerCardSlot = document.querySelector('.computer-card-slot')
+const playerCardSlot = document.querySelector('.playerCardSlot')
+const computerCardSlot = document.querySelector('.computerCardSlot')
+const computerDeckElement = document.querySelector('.computerDeck')
+const playerDeckElement = document.querySelector('.playerDeck')
+const text = document.querySelector('.text')
 
-const deck = new Deck();
-deck.shuffle()
-console.log(deck.cards)
+let playerDeck, computerDeck
 
-computerCardSlot.appendChild(deck.cards[0].getHTML())
+startGame()
+function startGame() {
+    const deck = new Deck()
+    deck.shuffle()
+
+    const deckMidpoint = Math.ceil(deck.numberOfCards /2)
+    playerDeck = new Deck (deck.cards.slice(0, deckMidpoint))
+    computerDeck = new Deck (deck.cards.slice(deckMidpoint, deck.numberOfCards))
+
+
+    cleanBeforeRound()
+}
+
+
+function cleanBeforeRound() {
+    computerCardSlot.innerHTML = ''
+    playerCardSlot.innerHTML = ''
+    text.innerHTML = ''
+
+
+    updateDeckCount()
+}
+
+function updateDeckCount() {
+    computerDeckElement.innerText = computerDeck.numberOfCards
+    playerDeckElement.innerText = playerDeck.numberOfCards
+}
+
+
+// computerCardSlot.appendChild(deck.cards[0].getHTML())
