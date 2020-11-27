@@ -30,8 +30,8 @@ class Card {
     }
 
     get color() {
-        return this.suit === '♣' || '♠' ? 'black' : 'red'
-    }
+        return this.suit === "♣" || this.suit === "♠" ? "black" : "red"
+      }
 
     getHTML() {
         const cardDiv = document.createElement("div")
