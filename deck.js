@@ -17,7 +17,7 @@ export default class Deck {
         return this.cards.shift()
     }
 
-    push() {
+    push(card) {
         this.cards.push(card)
     }
 
